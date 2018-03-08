@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="row form-group">
-                    <select ng-options="partner.name for partner in cData.partners" ng-model="cData.selectInput"></select>
+                    <select ng-options="partner.name for partner in cData.partners" ng-model="cData.selectInput" ng-change="cData.searchInput = ''"></select>
                 </div>                
                 <div class="row form-group">
                     <input type="text" class="form-control" ng-model="cData.searchInput" placeholder="Filter products" />

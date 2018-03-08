@@ -18,7 +18,7 @@
     <!-- Add your site or application content here -->
     <div class="container" ng-controller="myCtrl">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 side-bar">
                 <div class="row form-group">
                     <select ng-options="partner.name for partner in cData.partners" ng-model="cData.selectInput" ng-change="cData.searchInput = ''"></select>
                 </div>                
@@ -30,10 +30,11 @@
                         <li ng-repeat="product in cData.products | filter:cData.searchInput | filter:productFilter"><a ng-click="displayProductDetails(product)">{{product.name}}</a></li>
                     </ul>                    
                 </div>
+                <div ng-if="cData.numberOfApiCallsInProgress > 0">
+                    Loading...
+                </div> 
             </div>
-            <div ng-if="cData.numberOfApiCallsInProgress > 0">
-                Loading...
-            </div>     
+            
             <div class="col-md-8 col-md-offset-1">
                 <h1>Product Detail</h1>                
                 <div class="row" ng-if="cData.selectedProduct">                    

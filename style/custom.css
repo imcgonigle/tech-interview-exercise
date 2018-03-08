@@ -7,12 +7,12 @@ body {
   margin-top: 20px;
 }
 
-.product-list li {
+.product-list>li {
   width: 100%;
   margin-bottom: 1rem;
 }
 
-.product-list li a{
+.product-list>li>a{
   display: inline-block;
   text-align: center;
   width: 100%;
@@ -22,13 +22,21 @@ body {
   color: #333;
 }
 
-.product-list li a:hover{
+.product-list>li>a:hover{
   cursor: pointer;
   box-shadow: 0px 1px 6px rgb(221, 209, 209);
   background: #cbcfdd;
   text-decoration: none;
 }
 
-.product-list li a.active{
+.product-list>li>a.active{
   background: #9eaddd;
+}
+
+.product-img {
+  margin: 5%;
+  padding: 5%;
+  width: 80%;
+  background: #aaa;
+  border-radius: 5px;
 }

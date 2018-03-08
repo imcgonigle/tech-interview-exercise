@@ -4,29 +4,37 @@ angular.module("myApp")
 	$scope.cData = {			
 		partners: [],
 		products: [],			
-		selectedProduct: null
+		selectedProduct: null,
+		numberOfApiCallsInProgress: 0
 	}
 
 	$scope.buyProduct = function buyProduct(product) {
 		$location.path('/buyProduct').search({id: product.id});
 	};
-
 	
 	$scope.displayProductDetails = function displayProductDetails(product) {
 		$scope.cData.selectedProduct = product;
 	};	
 
-	$scope.getProducts = function getProducts() {		
+	$scope.getProducts = function getProducts() {
+		$scope.cData.numberOfApiCallsInProgress++;
 		MyApis.getProducts().then(function(products) {
 			$scope.cData.products = products;
-	    }, function(errorMessage) {});
+			$scope.cData.numberOfApiCallsInProgress--
+	    }, function(errorMessage) {
+				$scope.cData.numberOfApiCallsInProgress--
+			});
 	};
 	
 	$scope.getPartners = function getPartners() {
+		$scope.cData.numberOfApiCallsInProgress++
 		MyApis.getPartners().then(function(partners) {
+			$scope.cData.numberOfApiCallsInProgress--
 			$scope.cData.partners = partners;
 			$scope.selectInput = $scope.cData.partners[1];
-		}, function(errorMessage) {});
+		}, function(errorMessage) {
+			$scope.cData.numberOfApiCallsInProgress--
+		});
 	};
 
 	$scope.productFilter = function productFilter(value) {

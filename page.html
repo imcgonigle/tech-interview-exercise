@@ -43,6 +43,7 @@
                     <div class="col-md-8">
                         <h3>{{cData.selectedProduct.name}}</h3>
                         <p>{{cData.selectedProduct.description}}</p>
+                        <p class="text-warning" ng-if="cData.selectedProduct.requiresProductId">This product requires {{getRequiredProductName(cData.selectedProduct)}}</p>
                         <div>
                             <a class="btn btn-danger" ng-click="clearSelectedProduct()">Cancel</a>
                             <a class="btn btn-primary" ng-click="buyProduct(cData.selectedProduct)">Buy Product</a>

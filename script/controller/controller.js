@@ -20,6 +20,12 @@ angular.module("myApp")
 		$scope.cData.selectedProduct = null;
 	};
 
+	$scope.getRequiredProductName = function getRequiredProductName(product) {
+		return $scope.cData.products.filter(item => {
+			return item.id === product.requiresProductId
+		})[0].name;
+	};
+
 	$scope.getProducts = function getProducts() {
 		$scope.cData.numberOfApiCallsInProgress++;
 		MyApis.getProducts().then(function(products) {

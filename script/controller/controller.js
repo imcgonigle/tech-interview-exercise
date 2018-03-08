@@ -2,6 +2,7 @@ angular.module("myApp")
 	.controller("myCtrl", ['$scope', 'MyApis', 'Helper', function($scope, MyApis, Helper) {
 
 	$scope.cData = {			
+		partners: [],
 		products: [],			
 		selectedProduct: null
 	}
@@ -20,9 +21,21 @@ angular.module("myApp")
 			$scope.cData.products = products;
 	    }, function(errorMessage) {});
 	};
-    
+	
+	$scope.getPartners = function getPartners() {
+		MyApis.getPartners().then(function(partners) {
+			$scope.cData.partners = partners;
+			$scope.selectInput = $scope.cData.partners[1];
+		}, function(errorMessage) {});
+	};
+
+	$scope.productFilter = function productFilter(value) {
+		var selectInput = $scope.cData.selectInput;
+		return (selectInput == undefined || selectInput["products"].indexOf(value.id) !== -1) 
+	};
 
 	$scope.init = function init() {
+		$scope.getPartners();
 		$scope.getProducts();
 	};
 

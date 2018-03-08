@@ -18,16 +18,19 @@
     <!-- Add your site or application content here -->
     <div class="container" ng-controller="myCtrl">
         <div class="row">
-            <div class="col-md-3">                
+            <div class="col-md-3">
+                <div class="row form-group">
+                    <select ng-options="partner.name for partner in cData.partners" ng-model="cData.selectInput"></select>
+                </div>                
                 <div class="row form-group">
                     <input type="text" class="form-control" ng-model="cData.searchInput" placeholder="Filter products" />
                 </div>                
                 <div class="row">
                     <ul class="list-unstyled">
-                        <li ng-repeat="product in cData.products | filter:cData.searchInput"><a ng-click="displayProductDetails(product)">{{product.name}}</a></li>
+                        <li ng-repeat="product in cData.products | filter:cData.searchInput | filter:productFilter"><a ng-click="displayProductDetails(product)">{{product.name}}</a></li>
                     </ul>                    
                 </div>
-            </div>            
+            </div>       
             <div class="col-md-8 col-md-offset-1">
                 <h1>Product Detail</h1>                
                 <div class="row" ng-if="cData.selectedProduct">                    

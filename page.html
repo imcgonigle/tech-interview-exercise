@@ -20,14 +20,14 @@
         <div class="row">
             <div class="col-md-3 side-bar">
                 <div class="row form-group">
-                    <select ng-options="partner.name for partner in cData.partners" ng-model="cData.selectInput" ng-change="cData.searchInput = ''"></select>
+                    <select class="form-control" ng-options="partner.name for partner in cData.partners" ng-model="cData.selectInput" ng-change="cData.searchInput = ''"></select>
                 </div>                
                 <div class="row form-group">
                     <input type="text" class="form-control" ng-model="cData.searchInput" placeholder="Filter products" />
                 </div>                
                 <div class="row">
-                    <ul class="list-unstyled">
-                        <li ng-repeat="product in cData.products | filter:cData.searchInput | filter:productFilter"><a ng-click="displayProductDetails(product)">{{product.name}}</a></li>
+                    <ul class="list-unstyled product-list">
+                        <li ng-repeat="product in cData.products | filter:cData.searchInput | filter:productFilter"><a ng-class="{active: product.id === cData.selectedProduct.id}" ng-click="displayProductDetails(product)">{{product.name}}</a></li>
                     </ul>                    
                 </div>
                 <div ng-if="cData.numberOfApiCallsInProgress > 0">

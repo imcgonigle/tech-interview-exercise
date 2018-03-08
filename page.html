@@ -43,7 +43,10 @@
                     <div class="col-md-8">
                         <h3>{{cData.selectedProduct.name}}</h3>
                         <p>{{cData.selectedProduct.description}}</p>
-                        <div><a class="btn btn-primary" ng-click="buyProduct(cData.selectedProduct)">Buy Product</a></div>
+                        <div>
+                            <a class="btn btn-danger" ng-click="clearSelectedProduct()">Cancel</a>
+                            <a class="btn btn-primary" ng-click="buyProduct(cData.selectedProduct)">Buy Product</a>
+                        </div>
                     </div>                    
                 </div>
             </div>

@@ -14,16 +14,20 @@ angular.module("myApp")
 	
 	$scope.displayProductDetails = function displayProductDetails(product) {
 		$scope.cData.selectedProduct = product;
-	};	
+	};
+
+	$scope.clearSelectedProduct = function clearSelectedProduct() {
+		$scope.cData.selectedProduct = null;
+	};
 
 	$scope.getProducts = function getProducts() {
 		$scope.cData.numberOfApiCallsInProgress++;
 		MyApis.getProducts().then(function(products) {
 			$scope.cData.products = products;
 			$scope.cData.numberOfApiCallsInProgress--
-	    }, function(errorMessage) {
-				$scope.cData.numberOfApiCallsInProgress--
-			});
+		}, function(errorMessage) {
+			$scope.cData.numberOfApiCallsInProgress--
+		});
 	};
 	
 	$scope.getPartners = function getPartners() {

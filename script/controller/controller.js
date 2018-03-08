@@ -3,13 +3,14 @@ angular.module("myApp")
 
 	$scope.cData = {			
 		partners: [],
-		products: [],			
+		products: [],
+		purchasedItems: [],
 		selectedProduct: null,
 		numberOfApiCallsInProgress: 0
 	}
 
 	$scope.buyProduct = function buyProduct(product) {
-		$location.path('/buyProduct').search({id: product.id});
+		$scope.cData.purchasedItems.push(product);
 	};
 	
 	$scope.displayProductDetails = function displayProductDetails(product) {
